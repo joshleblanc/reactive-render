@@ -43,7 +43,6 @@ const useTracker = makeTracker(() => {
   }
 })
 
-@autorun
 export default () =>{
   const { count } = useTracker();
   return (
