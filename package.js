@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'reactive-render',
+  name: 'cereal:reactive-render',
   version: '1.0.0',
   // Brief, one-line summary of the package.
   summary: "A decorator to make a react component's render function reactive",
@@ -19,6 +19,6 @@ Package.onUse(function(api) {
 Package.onTest(function(api) {
   api.use('ecmascript');
   api.use('tinytest');
-  api.use('reactive-render');
+  api.use('cereal:reactive-render');
   api.mainModule('reactive-render-tests.js');
 });
