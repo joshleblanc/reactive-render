@@ -24,8 +24,10 @@ function makeComponentReactive(render) {
 export function autorun(componentClass) {
   const target = componentClass.prototype;
   const baseRender = target.render;
-  target.render = function() {
-    return makeComponentReactive.call(this, baseRender);
+  if(Meteor.isClient) {
+    target.render = function() {
+      return makeComponentReactive.call(this, baseRender);
+    }
   }
   return componentClass;
 }
