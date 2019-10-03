@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import { Tracker } from 'meteor/tracker';
+
 function makeComponentReactive(render) {
   const baseRender = render.bind(this);
   this.render = reactiveRender;
