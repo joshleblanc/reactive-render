@@ -27,3 +27,30 @@ export default class Hello extends Component {
   }
 }
 ```
+
+Hook usages:
+
+```jsx
+import React, { Component } from 'react';
+import { ReactiveVar } from 'meteor/reactive-var';
+import { makeTracker } from 'meteor/cereal:reactive-render';
+
+const Count = new ReactiveVar(0);
+
+const useTracker = makeTracker(() => {
+  return {
+    count: Count.get()
+  }
+})
+
+@autorun
+export default () =>{
+  const { count } = useTracker();
+  return (
+    <div>
+      <button onClick={() => Count.set(count + 1))}>Click Me</button>
+      <p>You've pressed the button {count} times.</p>
+    </div>
+  );
+}
+```

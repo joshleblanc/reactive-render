@@ -29,3 +29,22 @@ export function autorun(componentClass) {
   }
   return componentClass;
 }
+
+export const makeTracker = fn => {
+  let result = {};
+  return () => {
+    const [ , setResult ] = React.useState({});
+    Tracker.nonreactive(() => {
+      Tracker.autorun(computation => {
+        if(computation.firstRun) {
+          result = fn();
+        } else {
+          computation.stop();
+          setResult(result);
+        }
+      });
+    })
+
+    return result;
+  }
+}
