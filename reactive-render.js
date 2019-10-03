@@ -1,3 +1,4 @@
+import { Component } from 'react';
 function makeComponentReactive(render) {
   const baseRender = render.bind(this);
   this.render = reactiveRender;
