@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, useState } from 'react';
 import { Tracker } from 'meteor/tracker';
 
 function makeComponentReactive(render) {
@@ -33,7 +33,7 @@ export function autorun(componentClass) {
 export const makeTracker = fn => {
   let result = {};
   return () => {
-    const [ , setResult ] = React.useState({});
+    const [ , setResult ] = useState({});
     Tracker.nonreactive(() => {
       Tracker.autorun(computation => {
         if(computation.firstRun) {
