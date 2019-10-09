@@ -1,6 +1,6 @@
 Package.describe({
   name: 'cereal:reactive-render',
-  version: '1.0.7',
+  version: '1.0.8',
   // Brief, one-line summary of the package.
   summary: "A decorator to make a react component's render function reactive",
   // URL to the Git repository containing the source code for this package.
