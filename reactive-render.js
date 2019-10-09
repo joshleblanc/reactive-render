@@ -4,11 +4,13 @@ import { Tracker } from 'meteor/tracker';
 function makeComponentReactive(render) {
   const baseRender = render.bind(this);
   this.render = reactiveRender;
+  let c;
   function reactiveRender() {
     let rendering = undefined;
     Tracker.nonreactive(() => {
-      Tracker.autorun(computation => {
+      c = Tracker.autorun(computation => {
         if(computation.firstRun) {
+          if(c) c.stop();
           rendering = baseRender();
         } else {
           computation.stop();
