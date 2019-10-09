@@ -20,6 +20,14 @@ function makeComponentReactive(render) {
     })
     return rendering;
   }
+
+  const originalComponentWillUnmount = this.componentWillUnmount;
+  this.componentWillUnmount = function() {
+    if(c) c.stop();
+    if(originalComponentWillUnmount) {
+      originalComponentWillUnmount.call(this);
+    }
+  }
   return reactiveRender.call(this);
 }
 
